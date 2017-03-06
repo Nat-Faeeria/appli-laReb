@@ -22,7 +22,6 @@ export class PodcastsPage {
   }
 
   goToPlayer(tracks: FeedItem[], index: number){
-    console.log(index);
     this.navCtrl.push(PlayerPage, {tracks, index})
   }
 
