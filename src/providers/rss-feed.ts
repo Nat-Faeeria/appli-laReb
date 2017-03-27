@@ -49,11 +49,16 @@ export class RssFeed {
 
   parseTime(date: string) {
     let ret = "";
-    date.split(":").map(sNumber => ret += parseInt(sNumber)===0 ? "" : parseInt(sNumber)+":");
-    let tempTable = ret.split(":");
-    ret.split(":")[tempTable.length]="0"+tempTable[tempTable.length];
-    console.log("0"+tempTable[tempTable.length]);
-    return ret.slice(0,-1);
+    let timeTable = date.split(":");
+    if (timeTable.length == 3) {
+      if (timeTable[0] !== 0) {
+        ret+=timeTable[0]+":";
+      }
+      ret+=timeTable[1]+":"+timeTable[2];
+    } else {
+      ret+=timeTable[0]+":"+timeTable[1];
+    }
+    return ret;
   }
 
   timeInSeconds(time: string){
